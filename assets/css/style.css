@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+:root{
+    --primary-color: linear-gradient(90deg, rgba(193, 236, 228, 0.876) 0%, rgb(184, 212, 235) 35%, rgb(186, 224, 227) 98%); 
+    --primary-color-darker: #4a708e;
+    --buttons-color:  rgb(96, 159, 180);
+}
+* {
+    box-sizing: border-box;
+    outline:0;
+}
+body {
+    margin:0;
+    padding:0;
+    background: var(--primary-color);
+    font-family: 'Open sans', sans-serif;
+    font-size:1em;
+    line-height: 1.3em;
+}
+.container{
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease-in-out forwards;
+    max-width: 640px;
+    margin:50px auto;
+    color:#606060;
+    background-color: #fff;
+    padding:20px;
+    border-radius: 1%;
+    border:none;
+}
+form input, form label, form button{
+    display: block;
+    margin-left: 10%;
+    margin-bottom:10px;
+}
+
+form input{
+    font-size:14px;
+    border: 1px solid #B0B0B0; /* Borda cinza fina */
+    border-radius: 15px;
+    width: 80%;
+    margin-left: 10%;
+    color: #5B6770; /* Cor do texto em cinza escuro */
+    height:30px;
+    padding:20px 20px;
+}
+form input:focus{
+    outline: 1px solid var(--primary-color);
+}
+.btn-enviar {
+    transition: transform 0.2s ease-in-out;
+    border:none;
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 20px;
+    background: var(--buttons-color);
+    color:#fff;
+    font-size:15px;
+    font-weight: 700;
+    height:50px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.btn-enviar :hover{
+    background: var(--primary-color-darker);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+}
+
+.input-error {
+    animation: shake 0.3s ease-in-out;
+    border: 2px solid red;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.error-text{
+    margin-left: 9%;
+    font-size:12px;
+    color:red;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+}
+ .wrapper select {
+    flex: 1; /* Faz o select ocupar o espaço disponível */
+    /* padding: 2px; */
+}
+
+.btn-link{
+    border:none;
+    width: 15%;
+    border-radius: 20px;
+    background: var(--buttons-color);
+    color:#fff;
+    font-size:14px;
+    font-weight: 700;
+    height:40px;
+    cursor: pointer;
+    margin-left:9px;
+    margin-top: 10px;
+}
+.selectCat{
+    font-size:14px;
+    border: 1px solid #B0B0B0; /* Borda cinza fina */
+    border-radius: 15px;
+    width: 50%;
+    margin-left: 10%;
+    color: #5B6770; /* Cor do texto em cinza escuro */
+    height:40px;
+    padding:10px 5px;
+}
+
+
+
+/* Display das despesas*/
+.exibicaoDespesas{
+    max-width: 640px;
+    color:#606060;
+    background-color: #fff;
+    padding:20px;
+    margin-top: 3.1rem;
+    border-radius: 1%;
+    border:none;
+}
+.despesa-item{
+    list-style-type: none;
+}
+/* colocar os dois container juntos: */
+.wrapper-container {
+    display: flex;
+    justify-content: space-between; /* Espaço entre os elementos */
+    align-items: flex-start; /* Alinhar pelo topo */
+    gap: 20px; /* Espaçamento entre os blocos */
+    max-width: 90%;
+    margin: 50px auto;
+}
+
+.container, .exibicaoDespesas {
+    flex: 1; /* Ambos ocupam espaço igual */
+    max-width: 50%; /* Para evitar que fiquem muito largos */
+}
+
+/* Para telas menores (responsivo) */
+@media (max-width: 768px) {
+    .wrapper-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container, .exibicaoDespesas {
+        max-width: 100%;
+    }
+}
+/* logo e titulo */
+.headline {
+    display: flex;
+    align-items: center;
+    justify-content: left; /* Centraliza horizontalmente */
+    gap: 10px; /* Espaço entre o título e a imagem */
+    padding: 15px;
+    background-color: #f5f5f5; /* Fundo suave */
+    border-bottom: 2px solid #ddd; /* Linha sutil abaixo */
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Cor escura para destacar */
+    margin: 0;
+}
+
+.logo {
+    width: 40px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+

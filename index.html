@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Modelo</title>
+</head>
+<body>
+    <section class="headline">
+            <h1 class="title">PoupApp</h1>
+            <img class='logo' src="/assets/img/aviso.png" alt="">
+        </section>
+    <div class="wrapper-container">
+    <section class="container">
+<h1>Nova Despesa</h1>
+        <form action="" class="formulario" method="POST">
+            <label>Descrição</label>
+            <input type="text" class="despesa valor" id="despesa">
+            <label for="">Categoria</label>
+            <div class="wrapper">
+            <select class='selectCat'id="categoria">
+                <option value="">Selecione uma categoria</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Estudos">Estudos</option>
+                <option value="Pessoal">Pessoal</option>
+            </select>
+            <button type="button" class="btn-link" id="btnNovaCategoria">Adicionar</button>
+        </div>
+            <label>Quantia</label>
+            <input type="text" class='quantia valor' placeholder="R$ 00,0 "id="input-teste-1">
+            <label >Data despesa</label>
+            <input type="date" class="data valor" id="input-teste-1">
+            <button class="btn-enviar">Enviar</button>
+        </form>
+    </section>
+    <section class="exibicaoDespesas">
+    <h1>Minhas Despesas</h1>
+    <ul class="resultado"></ul>
+    <button id='limparD' class="btn-enviar">Remover Despesas</button>
+</section>
+</div>
+  <script src="./assets/js/script-corrigido.js"></script>  
+</body>
+</html>
