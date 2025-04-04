@@ -1,5 +1,6 @@
 class InsereDespesa {
     constructor(){
+        //cria os atalhos e carrega os eventos
         this.formulario = document.querySelector('.formulario');
         this.resultado = document.querySelector('.resultado');
         this.clearButton = document.querySelector('#limparD');
@@ -9,12 +10,15 @@ class InsereDespesa {
     }
     
     eventos(){
+        //botao de enviar
         this.formulario.addEventListener('submit', (e) => {
             this.handleSubmit(e);
         });
+        //botao de apagar  todas as tarefas
         this.clearButton.addEventListener('click', (e)=>{
             this.limparDespesas(e);
         });
+        //botao de adicionar tarefas
         this.addCatBtn.addEventListener('click', (e)=>{
             this.novaOpcao(e);
         });
@@ -23,6 +27,7 @@ class InsereDespesa {
     handleSubmit(e){
         e.preventDefault();  
 
+        //Se a despesa tiver uma categoria e for enviada, alertar que a despesa foi criada
         if (this.addDespesa() && this.addCategoria()) {
             alert('Despesa criada');
             this.formulario.reset();
@@ -31,18 +36,24 @@ class InsereDespesa {
     }
 
     addDespesa(){
+        //peguei todos os dados do formulário
         const despesaNome = this.formulario.querySelector('.despesa').value.trim();
         const despesaQuantia = this.formulario.querySelector('.quantia').value.trim();
         const despesaData = this.formulario.querySelector('.data').value;
         const despesaCategoria = this.formulario.querySelector('.selectCat').value.trim();
         const categoria = this.formulario.querySelector('.selectCat').value.trim();
 
+        //aqui ele verifica se cada um dos campos estão preenchidos para serem enviados
         if (!despesaNome || !despesaQuantia || !despesaData || !categoria) {
             alert("Preencha todos os campos da despesa!");
-            return false;
+            return false; //bloqueia o envio do formulário (true envia)
         }
-
+       
+        //Recupera um array de despesas do localStorage, convertendo de JSON para objeto, 
+        // ou usa um array vazio se não houver dados.
         let despesasFromStorage = JSON.parse(localStorage.getItem('despesas')) || [];
+
+        //Se não existir uma despesa com a mesma categoria, adiciona uma nova ao array.
         if(!despesasFromStorage.some(cat => cat.categoria === categoria)){
             despesasFromStorage.push({ nome: despesaNome, 
                 categoria: despesaCategoria,
@@ -52,7 +63,7 @@ class InsereDespesa {
                 concluida: false,
                 });
         }
-
+        //adiciona o array de desespasFromStorage no localStorge, convertendo ele em string e nomeando como despesas
         localStorage.setItem('despesas', JSON.stringify(despesasFromStorage));
 
         this.exibirDespesas(despesasFromStorage);
@@ -78,7 +89,9 @@ class InsereDespesa {
         return true;
     }
     exibirDespesas(despesas){
+        //When the user submit the form, all fields will be empty
         this.resultado.innerHTML = '';
+        //For every submitted expense
         despesas.map((despesa) => {
             const novoElement = document.createElement('li');
             novoElement.classList.add('despesa-item');
